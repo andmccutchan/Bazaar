@@ -100,16 +100,19 @@ const Bazaar = ({ searchTerm = "" }: BazaarProps) => {
   );
   return (
     <>
-      <div className="grid grid-cols-3 lg:grid-cols-4 gap-2 mx-4">
-        {filteredListings.map((item, index) => (
-          <ListingItem
-            key={`${item.id}-${index}`}
-            title={item.title}
-            image={item.image}
-            price={item.price}
-            description={item.description}
-          />
-        ))}
+      <div className="mx-4">
+        <h2 className="text-3xl my-2">Find what you're looking for</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+          {filteredListings.map((item, index) => (
+            <ListingItem
+              key={`${item.id}-${index}`}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              description={item.description}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

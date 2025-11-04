@@ -1,9 +1,7 @@
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -23,17 +21,15 @@ const ListingItem = ({
   return (
     <>
       <Link className="hover:underline" to="/item">
-        <Card>
-          <CardContent>
-            <div className="h-[200px] w-full overflow-hidden">
-              <img
-                className="rounded-sm w-full h-full object-cover"
-                src={image}
-                alt={title}
-              />
-            </div>
+        <Card className="rounded-sm pt-0">
+          <CardContent className="px-0">
+            <img
+              className="w-full h-70 object-cover rounded-t-sm"
+              src={image}
+              alt={title}
+            />
           </CardContent>
-          <CardHeader>
+          <CardHeader className="px-2">
             <CardTitle>
               {title} <span className="text-slate-600">${price}</span>
             </CardTitle>

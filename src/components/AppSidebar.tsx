@@ -1,4 +1,4 @@
-import { Plus, Home, Inbox, Settings, Bell } from "lucide-react";
+import { Plus, Home, Inbox, Settings, Bell, Shirt } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -8,6 +8,8 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
+  SidebarMenuBadge,
+  SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -36,6 +38,14 @@ const items = [
   },
 ];
 
+const categories = [
+  {
+    title: "Clothing",
+    icon: Shirt,
+    url: "#",
+  },
+];
+
 interface AppSidebarProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
@@ -43,37 +53,55 @@ interface AppSidebarProps {
 
 export function AppSidebar({ searchTerm, setSearchTerm }: AppSidebarProps) {
   return (
-    <Sidebar>
+    <Sidebar className="relative h-full border-r">
       <SidebarHeader>
         <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
           Bazaar
         </h1>
       </SidebarHeader>
-      <SidebarContent className="p-2">
-        <Input
-          className="rounded-2xl"
-          type="text"
-          placeholder="Search Bazaar"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <Link to={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-        <Link to="/sell">
-          <Button className="w-full" variant="outline">
-            Sell item <Plus />
-          </Button>
-        </Link>
+      <SidebarContent>
+        <SidebarGroup>
+          <Input
+            className="rounded-2xl"
+            type="text"
+            placeholder="Search Bazaar"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <SidebarMenu>
+            {items.map((item) => (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton asChild>
+                  <Link to={item.url}>
+                    <item.icon size={48} />
+                    <span>{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+          <Link to="/sell">
+            <Button className="w-full" variant="outline">
+              Sell item <Plus />
+            </Button>
+          </Link>
+        </SidebarGroup>
+        <hr />
+        <SidebarGroup>
+          <SidebarHeader>Categories</SidebarHeader>
+          <SidebarMenu>
+            {categories.map((item) => (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuSubButton className="flex w-full" asChild>
+                  <div>
+                    <item.icon />
+                    <p>{item.title}</p>
+                  </div>
+                </SidebarMenuSubButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter />
     </Sidebar>
