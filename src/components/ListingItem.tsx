@@ -30,8 +30,14 @@ const ListingItem = ({
             />
           </CardContent>
           <CardHeader className="px-2">
-            <CardTitle>
-              {title} <span className="text-slate-600">${price}</span>
+            <CardTitle className="flex justify-between">
+              {title}{" "}
+              <span className="text-slate-600">
+                {price.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+              </span>
             </CardTitle>
             <CardDescription className="truncate">
               {description}

@@ -17,6 +17,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="flex justify-between items-center border-b p-2 bg-sidebar">
+        <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
+          Bazaar
+        </h1>
         <NavigationMenu className="mx-auto">
           <NavigationMenuList>
             <NavigationMenuItem>

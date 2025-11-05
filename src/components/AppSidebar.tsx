@@ -1,4 +1,22 @@
-import { Plus, Home, Inbox, Settings, Bell, Shirt } from "lucide-react";
+import {
+  Plus,
+  Home,
+  Inbox,
+  Settings,
+  Bell,
+  Shirt,
+  Search,
+  Plug,
+  School,
+  Sofa,
+  BrushCleaning,
+  Hammer,
+  Microwave,
+  BookType,
+  Flower2,
+  Turntable,
+  PencilRuler,
+} from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -8,7 +26,6 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-  SidebarMenuBadge,
   SidebarMenuSubButton,
 } from "@/components/ui/sidebar";
 import { Input } from "./ui/input";
@@ -44,6 +61,51 @@ const categories = [
     icon: Shirt,
     url: "#",
   },
+  {
+    title: "Electronics",
+    icon: Plug,
+    url: "#",
+  },
+  {
+    title: "Furnitrue",
+    icon: Sofa,
+    url: "#",
+  },
+  {
+    title: "Cleaning",
+    icon: BrushCleaning,
+    url: "#",
+  },
+  {
+    title: "Tools",
+    icon: Hammer,
+    url: "#",
+  },
+  {
+    title: "Appliances",
+    icon: Microwave,
+    url: "#",
+  },
+  {
+    title: "Books",
+    icon: BookType,
+    url: "#",
+  },
+  {
+    title: "Plants",
+    icon: Flower2,
+    url: "#",
+  },
+  {
+    title: "Entertainment",
+    icon: Turntable,
+    url: "#",
+  },
+  {
+    title: "School supplies",
+    icon: PencilRuler,
+    url: "#",
+  },
 ];
 
 interface AppSidebarProps {
@@ -54,11 +116,7 @@ interface AppSidebarProps {
 export function AppSidebar({ searchTerm, setSearchTerm }: AppSidebarProps) {
   return (
     <Sidebar className="relative h-full border-r">
-      <SidebarHeader>
-        <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
-          Bazaar
-        </h1>
-      </SidebarHeader>
+      <SidebarHeader>Find what you're looking for</SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <Input
@@ -68,7 +126,7 @@ export function AppSidebar({ searchTerm, setSearchTerm }: AppSidebarProps) {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <SidebarMenu>
+          <SidebarMenu className="my-2">
             {items.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
